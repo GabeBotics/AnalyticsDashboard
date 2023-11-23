@@ -27,9 +27,10 @@ import base64
 # Initial page config
 
 st.set_page_config(
-     page_title='Streamlit cheat sheet',
+     page_title='BUS 458 Final Dashboard',
      layout="wide",
      initial_sidebar_state="expanded",
+     page_icon="favicon.png";
 )
 
 def main():
