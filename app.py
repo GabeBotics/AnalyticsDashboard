@@ -9,8 +9,8 @@ from pathlib import Path
 import base64
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import KMeans
+from scikit-learn.preprocessing import StandardScaler
+from scikit-learn.cluster import KMeans
 import matplotlib.pyplot as plt
 
 # Initial page config
