@@ -18,6 +18,55 @@ st.set_page_config(
 )
 
 def main():
+    # Main code for model goes here
+    import numpy as np
+    import pandas as pd
+
+    url='https://drive.google.com/file/d/13FtnUNQTJvqrB-jJBCDbwprSuehISIk8/view?usp=sharing'
+    url='https://drive.google.com/uc?id=' + url.split('/')[-2]
+
+    df = pd.read_csv(url, index_col=0)
+
+    df.describe().loc[['mean', 'std']]
+
+    from sklearn.preprocessing import StandardScaler
+
+    scaler = StandardScaler()
+
+    scaler.fit(df)
+
+    x = scaler.transform(df)
+
+    # Specify the number of clusters (you can change this as needed)
+    num_clusters = 3
+    
+    # Extract the features for clustering
+    features = df[['Rape', 'Assault']]
+    
+    # Initialize KMeans model
+    kmeans = KMeans(n_clusters=num_clusters, random_state=42)
+    
+    # Fit the model and predict clusters
+    df['cluster'] = kmeans.fit_predict(features)
+    
+    # Scatter plot for each cluster with a different color
+    plt.figure(figsize=(8, 6))
+    
+    for cluster in range(num_clusters):
+        cluster_data = df[df['cluster'] == cluster]
+        plt.scatter(cluster_data['Rape'], cluster_data['Assault'], label=f'Cluster {cluster}')
+    
+    # Plot the centroids (optional)
+    plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], marker='x', s=200, color='red', label='Centroids')
+    
+    plt.title('K-means Clustering')
+    plt.xlabel('Rape')
+    plt.ylabel('Assault')
+    plt.legend()
+    plt.show()
+    
+    # -----------------------------------
+    
     cs_sidebar()
     cs_body()
 
