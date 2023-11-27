@@ -21,7 +21,6 @@ def main():
     # Main code for model goes here
     import numpy as np
     import pandas as pd
-    import sklearn
     from sklearn.preprocessing import StandardScaler
     from sklearn.cluster import KMeans
     import matplotlib.pyplot as plt
