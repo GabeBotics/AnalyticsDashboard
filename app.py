@@ -21,6 +21,9 @@ def main():
     # Main code for model goes here
     import numpy as np
     import pandas as pd
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.cluster import KMeans
+    import matplotlib.pyplot as plt
 
     url='https://drive.google.com/file/d/13FtnUNQTJvqrB-jJBCDbwprSuehISIk8/view?usp=sharing'
     url='https://drive.google.com/uc?id=' + url.split('/')[-2]
@@ -28,8 +31,6 @@ def main():
     df = pd.read_csv(url, index_col=0)
 
     df.describe().loc[['mean', 'std']]
-
-    from sklearn.preprocessing import StandardScaler
 
     scaler = StandardScaler()
 
