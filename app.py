@@ -25,7 +25,7 @@ st.set_page_config(
 def main():
     # Main code for model goes here
 
-    url='https://drive.google.com/file/d/13FtnUNQTJvqrB-jJBCDbwprSuehISIk8/view?usp=sharing'
+    url='https://drive.google.com/file/d/1VJnyvUB2MwKKINfvpoYLHYeoHO7FznVp/view?usp=sharing'
     url='https://drive.google.com/uc?id=' + url.split('/')[-2]
 
     df = pd.read_csv(url, index_col=0)
