@@ -45,7 +45,7 @@ def main():
     features = df[['Rape', 'Assault']]
     
     # Initialize KMeans model
-    kmeans = KMeans(n_clusters=num_clusters, random_state=42)
+    kmeans = KMeans(n_clusters=num_clusters, random_state=42, n_init=5)
     
     # Fit the model and predict clusters
     df['cluster'] = kmeans.fit_predict(features)
@@ -64,7 +64,9 @@ def main():
     plt.xlabel('Rape')
     plt.ylabel('Assault')
     plt.legend()
-    plt.show()
+
+    # Show the pyplot using streamlit's pyplot function
+    st.pyplot( plt )
     
     # -----------------------------------
     
