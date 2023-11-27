@@ -1,23 +1,7 @@
 """
-Streamlit Cheat Sheet
-
-App to summarise streamlit docs v1.25.0
-
-There is also an accompanying png and pdf version
-
-https://github.com/daniellewisDL/streamlit-cheat-sheet
-
-v1.25.0
-20 August 2023
-
+Analytics Dashboard for BUS 458 Final Project
 Author:
-    @daniellewisDL : https://github.com/daniellewisDL
-
-Contributors:
-    @arnaudmiribel : https://github.com/arnaudmiribel
-    @akrolsmir : https://github.com/akrolsmir
-    @nathancarter : https://github.com/nathancarter
-
+    @GabeBotics : https://github.com/GabeBotics
 """
 
 import streamlit as st
