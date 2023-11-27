@@ -1,2 +1,3 @@
 streamlit
-sklearn
+sklearn.cluster
+sklearn.preprocessing
