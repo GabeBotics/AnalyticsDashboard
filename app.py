@@ -39,7 +39,7 @@ def main():
     x = scaler.transform(df)
 
     # Specify the number of clusters (you can change this as needed)
-    num_clusters = st.number_input('How many clusters?', min_value=1) 
+    num_clusters = st.slider('How many clusters?', min_value=1, max_value=50) 
     
     # Extract the features for clustering
     features = df[['Rape', 'Assault']]
