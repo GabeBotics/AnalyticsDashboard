@@ -7,6 +7,11 @@ Author:
 import streamlit as st
 from pathlib import Path
 import base64
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
 
 # Initial page config
 
@@ -19,11 +24,6 @@ st.set_page_config(
 
 def main():
     # Main code for model goes here
-    import numpy as np
-    import pandas as pd
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.cluster import KMeans
-    import matplotlib.pyplot as plt
 
     url='https://drive.google.com/file/d/13FtnUNQTJvqrB-jJBCDbwprSuehISIk8/view?usp=sharing'
     url='https://drive.google.com/uc?id=' + url.split('/')[-2]
