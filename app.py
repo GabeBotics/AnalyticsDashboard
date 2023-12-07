@@ -32,19 +32,25 @@ def main():
     df = pd.read_csv(url, index_col=0)
 
     robjects.r('''
-         # create a function `f`
-...         f <- function(r, verbose=FALSE) {
-...             if (verbose) {
-...                 cat("I am calling f().\n")
-...             }
-...             2 * pi * r
-...         }
-...         # call the function `f` with argument value 3
-...         f(3)
-...         ''')
+        
+        kaggleCon <- read.csv("kaggleContinuous.csv")
+
+        kaggleCon <- kaggleCon %>%
+            mutate(across(c(2:4, 6:14), as.factor))
+
+        kaggleCon1 <- kaggleCon %>% 
+            select(-c(Published.Academic.Research.Papers, How.many.individuals.are.responsible, Company.Size,Years.Used.Machine.Learning, Similar.Title, Industry.of.Work))
+
+        lm <- lm(Compensation~ Age + Gender + Country + Years.Programming + Incorporate.Machine.Learning + ML.Hubs...Repositories.Used + Media.on.Reddit + Media.on.Course.Forums + Media.on.Podcasts + Media.on.Journal.Publications + Data.Science.on.Fast.ai + Data.Science.on.Udacity + Data.Science.University.Courses +Python+R+SQL+C+`C.`+`C..` + Java + Javascript + Bash + PHP + MATLAB + Julia + Go + No.Programming.Languages, data = kaggleCon1)
+
+        summary(lm)
+
+        vif(lm)
+
+         ''')
 
     # Show the pyplot using streamlit's pyplot function
-    st.pyplot( plt )
+    # st.pyplot( plt )
     
     # -----------------------------------
     
