@@ -12,6 +12,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
+ from rpy2 import robjects
 
 # Initial page config
 
@@ -30,40 +31,17 @@ def main():
 
     df = pd.read_csv(url, index_col=0)
 
-    df.describe().loc[['mean', 'std']]
-
-    scaler = StandardScaler()
-
-    scaler.fit(df)
-
-    x = scaler.transform(df)
-
-    # Specify the number of clusters (you can change this as needed)
-    num_clusters = st.slider('How many clusters?', min_value=1, max_value=50) 
-    
-    # Extract the features for clustering
-    features = df[['Rape', 'Assault']]
-    
-    # Initialize KMeans model
-    kmeans = KMeans(n_clusters=num_clusters, random_state=42, n_init=5)
-    
-    # Fit the model and predict clusters
-    df['cluster'] = kmeans.fit_predict(features)
-    
-    # Scatter plot for each cluster with a different color
-    plt.figure(figsize=(8, 6))
-    
-    for cluster in range(num_clusters):
-        cluster_data = df[df['cluster'] == cluster]
-        plt.scatter(cluster_data['Rape'], cluster_data['Assault'], label=f'Cluster {cluster}')
-    
-    # Plot the centroids (optional)
-    plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], marker='x', s=200, color='red', label='Centroids')
-    
-    plt.title('K-means Clustering')
-    plt.xlabel('Rape')
-    plt.ylabel('Assault')
-    plt.legend()
+    robjects.r('''
+         # create a function `f`
+...         f <- function(r, verbose=FALSE) {
+...             if (verbose) {
+...                 cat("I am calling f().\n")
+...             }
+...             2 * pi * r
+...         }
+...         # call the function `f` with argument value 3
+...         f(3)
+...         ''')
 
     # Show the pyplot using streamlit's pyplot function
     st.pyplot( plt )
