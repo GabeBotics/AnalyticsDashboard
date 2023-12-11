@@ -54,7 +54,7 @@ def main():
     
     lm = LinearRegression().fit( X_train, y_train )
     
-    InputAge = '18-21' + ';'
+    InputAge = st.selectbox('How old are you?', ["18-21","22-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-69","70+"])
     
     InputGender = 'Man' + ';'
     
