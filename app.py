@@ -36,7 +36,7 @@ def main():
 
     url='https://drive.google.com/file/d/1DxarCHveMfr4HHr1R4nBDqiOQIcU7T30/view?usp=sharing'
     url='https://drive.google.com/uc?id=' + url.split('/')[-2]
-    
+
     # Read the CSV file
     kaggleCon = pd.read_csv( url, index_col=0 )
     
