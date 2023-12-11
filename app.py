@@ -259,7 +259,7 @@ def main():
     
     # -----------------------------------
     st.sidebar.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=148 height=148>](https://github.com/GabeBotics/AnalyticsDashboard)'''.format(img_to_bytes("logomark_website.png")), unsafe_allow_html=True)
-    st.sidebar.header('Final Project Dashboard')
+    st.sidebar.title('Final Project Dashboard')
     st.sidebar.subheader('Gabriel Walker, Aaryon Sharma, Ben Poovey, Daniel Casella')
 
     st.sidebar.divider()
