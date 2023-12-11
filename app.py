@@ -34,7 +34,7 @@ def main():
     
     # Main code for model goes here
 
-    url='https://drive.google.com/file/d/1DxarCHveMfr4HHr1R4nBDqiOQIcU7T30/view?usp=sharing'
+    url='https://drive.google.com/file/d/1sNJ7KwzX93RGZQQhXfm1R6bLcNRUiBcP/view?usp=sharing'
     url='https://drive.google.com/uc?id=' + url.split('/')[-2]
 
     # Read the CSV file
