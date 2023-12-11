@@ -72,7 +72,22 @@ def main():
     InputMLHubsRepositoriesUsed = st.selectbox('What Machine Learning Repository do you use?', kaggleCon['ML.Hubs...Repositories.Used'].unique()) + ';'
     
     InputHighestLevelofFormalEducation = st.selectbox('What is your highest level of education?', kaggleCon['Highest.Level.of.Formal.Education'].unique()) + ';'
-    
+
+    InputProgrammingLanguages = st.multiselect('What programming languages are you familiar with?', ['Python', 'R', 'SQL', 'C', 'C#', 'C++', 'Java', 'Javascript', 'Bash', 'PHP', 'MATLAB', 'Julia', 'Go' ]))
+
+    NoProgramming = '0'
+    if len(InputProgrammingLanguages) == 0:
+        NoProgramming = '1'
+
+    Go = '0;'
+    if 'Go' in InputProgrammingLanguages:
+        Go = '1;'
+
+    Python = '0;'
+    if 'Python' in InputProgrammingLanguages:
+        Python = '1;'
+
+
     StringData = StringIO('Age;Gender;Country;Student;Years.Programming;Incorporate.Machine.Learning;ML.Hubs...Repositories.Used;Highest.Level.of.Formal.Education;Helpful.University;' 
                   + 'Helpful.Online.Courses;Helpful.Social.Media;Helpful.Video.Platform;Helpful.Kaggle;Helpful.None;Media.on.Social.Twitter;Media.on.Social.Email.Newsletters;'
                   + 'Media.on.Reddit;Media.on.Kaggle;Media.on.Course.Forums;Media.on.Youtube;Media.on.Podcasts;Media.on.Blogs;Media.on.Journal.Publications;Media.on.Slack.Communities;'
@@ -81,7 +96,7 @@ def main():
                   + InputAge + InputGender + InputCountry + InputStudent + InputYearsProgramming + InputIncorporateMachineLearning +
                           InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'
                            + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
-                           + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0\n' )
+                           + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + Go + NoProgramming + '\n' )
     
     inputdf = pd.read_csv( StringData, sep=";")
 
