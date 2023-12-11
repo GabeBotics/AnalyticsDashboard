@@ -73,7 +73,7 @@ def main():
     
     InputHighestLevelofFormalEducation = st.selectbox('What is your highest level of education?', kaggleCon['Highest.Level.of.Formal.Education'].unique()) + ';'
 
-    InputProgrammingLanguages = st.multiselect('What programming languages are you familiar with?', ['Python', 'R', 'SQL', 'C', 'C#', 'C++', 'Java', 'Javascript', 'Bash', 'PHP', 'MATLAB', 'Julia', 'Go' ]))
+    InputProgrammingLanguages = st.multiselect('What programming languages are you familiar with?', ['Python', 'R', 'SQL', 'C', 'C#', 'C++', 'Java', 'Javascript', 'Bash', 'PHP', 'MATLAB', 'Julia', 'Go' ])
 
     NoProgramming = '0'
     if len(InputProgrammingLanguages) == 0:
