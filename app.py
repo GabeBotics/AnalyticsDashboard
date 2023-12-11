@@ -12,7 +12,14 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
- from rpy2 import robjects
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import r2_score
+from io import StringIO
 
 # Initial page config
 
@@ -26,31 +33,64 @@ st.set_page_config(
 def main():
     # Main code for model goes here
 
-    url='https://drive.google.com/file/d/1VJnyvUB2MwKKINfvpoYLHYeoHO7FznVp/view?usp=sharing'
+    url='https://drive.google.com/file/d/1DxarCHveMfr4HHr1R4nBDqiOQIcU7T30/view?usp=sharing'
     url='https://drive.google.com/uc?id=' + url.split('/')[-2]
-
-    df = pd.read_csv(url, index_col=0)
-
-    robjects.r('''
+    
+    # Read the CSV file
+    kaggleCon = pd.read_csv( url, index_col=0 )
+    
+    # Convert specified columns to factors
+    cols_to_convert = ['Age', 'Gender', 'Country', 'Years.Programming', 'Incorporate.Machine.Learning', 'ML.Hubs...Repositories.Used', 'Highest.Level.of.Formal.Education']
+    kaggleCon[cols_to_convert] = kaggleCon[cols_to_convert].apply(lambda x: x.astype('category'))
+    
+    df_encoded = pd.get_dummies(kaggleCon, columns=cols_to_convert)
+    
+    # Define the dependent variable and independent variables for the linear model
+    y = df_encoded['Compensation']
+    X = df_encoded.drop(columns=['Compensation'])
         
-        kaggleCon <- read.csv("kaggleContinuous.csv")
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3, random_state=29)
+    
+    lm = LinearRegression().fit( X_train, y_train )
+    
+    InputAge = '18-21' + ';'
+    
+    InputGender = 'Man' + ';'
+    
+    InputCountry = 'United States of America' + ';'
+    
+    InputStudent = str(1) + ';'
+    
+    InputYearsProgramming = '3-5 years' + ';'
+    
+    InputIncorporateMachineLearning = 'No Answer' + ';'
+    
+    InputMLHubsRepositoriesUsed = 'No Answer' + ';'
+    
+    InputHighestLevelofFormalEducation = 'Some college/university study without earning a bachelor’s degree' + ';'
+    
+    StringData = StringIO('Age;Gender;Country;Student;Years.Programming;Incorporate.Machine.Learning;ML.Hubs...Repositories.Used;Highest.Level.of.Formal.Education;Helpful.University;' 
+                  + 'Helpful.Online.Courses;Helpful.Social.Media;Helpful.Video.Platform;Helpful.Kaggle;Helpful.None;Media.on.Social.Twitter;Media.on.Social.Email.Newsletters;'
+                  + 'Media.on.Reddit;Media.on.Kaggle;Media.on.Course.Forums;Media.on.Youtube;Media.on.Podcasts;Media.on.Blogs;Media.on.Journal.Publications;Media.on.Slack.Communities;'
+                  + 'No.Media.Sources;Data.Science.on.Coursera;Data.Science.on.edX;Data.Science.on.Kaggle.Learn.Courses;Data.Science.on.DataCamp;Data.Science.on.Fast.ai;Data.Science.on.Udacity;Data.Science.on.Udemy;'
+                  + 'Data.Science.on.LinkedIn.Learning;Cloud.certification.programs;Data.Science.University.Courses;No.Data.Science.Courses;Python;R;SQL;C;C.;C..;Java;Javascript;Bash;PHP;MATLAB;Julia;Go;No.Programming.Languages\n'
+                  + InputAge + InputGender + InputCountry + InputStudent + InputYearsProgramming + InputIncorporateMachineLearning +
+                          InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'
+                           + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
+                           + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0\n' )
+    
+    inputdf = pd.read_csv( StringData, sep=";")
 
-        kaggleCon <- kaggleCon %>%
-            mutate(across(c(2:4, 6:14), as.factor))
+    inputdf = pd.concat( [kaggleCon.drop(columns='Compensation'), inputdf] )
+    
+    input_encoded = pd.get_dummies(inputdf, columns=cols_to_convert)
+    
+    prediction = lm.predict( input_encoded )
 
-        kaggleCon1 <- kaggleCon %>% 
-            select(-c(Published.Academic.Research.Papers, How.many.individuals.are.responsible, Company.Size,Years.Used.Machine.Learning, Similar.Title, Industry.of.Work))
-
-        lm <- lm(Compensation~ Age + Gender + Country + Years.Programming + Incorporate.Machine.Learning + ML.Hubs...Repositories.Used + Media.on.Reddit + Media.on.Course.Forums + Media.on.Podcasts + Media.on.Journal.Publications + Data.Science.on.Fast.ai + Data.Science.on.Udacity + Data.Science.University.Courses +Python+R+SQL+C+`C.`+`C..` + Java + Javascript + Bash + PHP + MATLAB + Julia + Go + No.Programming.Languages, data = kaggleCon1)
-
-        summary(lm)
-
-        vif(lm)
-
-         ''')
-
-    # Show the pyplot using streamlit's pyplot function
-    # st.pyplot( plt )
+    ind_prediction = prediction[len(prediction) - 1]
+    
+    st.metric(label="Your Predicted Compensation", value=ind_prediction)
     
     # -----------------------------------
     
