@@ -34,7 +34,7 @@ def main():
     
     # Main code for model goes here
     st.header("BUS 458 Final Project Compensation Estimate")
-    st.subheader("This app is intended to demonstrate our data analytics abilities in BUS 458. It runs a simple linear regression model based on the Kaggle Programmer Compensation Survey.")
+    st.subheader("This app is intended to demonstrate our data analytics abilities in BUS 458. It runs a linear regression model based on the Kaggle Programmer Compensation Survey.")
 
     # url='https://drive.google.com/file/d/1sNJ7KwzX93RGZQQhXfm1R6bLcNRUiBcP/view?usp=sharing'
     # url='https://drive.google.com/uc?id=' + url.split('/')[-2]
