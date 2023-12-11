@@ -24,13 +24,16 @@ from io import StringIO
 # Initial page config
 
 st.set_page_config(
-     page_title='BUS 458 Final Dashboard',
+     page_title='Estimate Programmer Compensation',
      layout="wide",
      initial_sidebar_state="expanded",
      page_icon="favicon.png"
 )
 
 def main():
+
+    st.header("BUS 458 Final Project: Programmer Salary Estimate")
+    st.subheader("This estimate relies on Kaggle's programmer compensation survey and was created solely for use by BUS 458 classmates and to represent our data analytics abilities.")
     # Main code for model goes here
 
     url='https://drive.google.com/file/d/1DxarCHveMfr4HHr1R4nBDqiOQIcU7T30/view?usp=sharing'
@@ -56,7 +59,8 @@ def main():
     
     InputAge = st.selectbox('How old are you?', ["18-21","22-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-69","70+"]) + ';'
     
-    InputGender = 'Man' + ';'
+    InputGender = st.radio(
+    "What is your gender?", [":rainbow[Comedy]", "***Drama***", "Documentary :movie_camera:"])
     
     InputCountry = 'United States of America' + ';'
     
@@ -111,7 +115,8 @@ def img_to_bytes(img_path):
 def cs_sidebar():
 
     st.sidebar.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=148 height=148>](https://github.com/GabeBotics/AnalyticsDashboard)'''.format(img_to_bytes("logomark_website.png")), unsafe_allow_html=True)
-    st.sidebar.header('BUS 458 Final Dashboard')
+    st.sidebar.header('Predict Programmer Compensation')
+    st.sidebar.subheader('BUS 458 Final Project')
     return None
 
 ##########################
