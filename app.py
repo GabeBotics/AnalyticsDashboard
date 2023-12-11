@@ -25,7 +25,7 @@ import collections
 # Initial page config
 
 st.set_page_config(
-     page_title='Estimate Programmer Compensation',
+     page_title='Dashboard',
      layout="wide",
      initial_sidebar_state="expanded",
      page_icon="favicon.png"
@@ -34,8 +34,14 @@ st.set_page_config(
 def main():
     
     # Main code for model goes here
-    st.header("BUS 458 Final Project Compensation Estimate")
-    st.subheader("This app is intended to demonstrate our data analytics abilities in BUS 458. It runs a linear regression model based on the Kaggle Programmer Compensation Survey.")
+    st.title("Final Project Dashboard")
+    st.subheader("Gabriel Walker, Aaryon Sharma, Ben Poovey, Daniel Casella")
+    st.text("This dashboard is intended to predict compensation for programmers using a linear regression model. Data is based on the Kaggle Programmer Compensation Dataset (2022)." +
+    " All compensation predictions are an estimate, and should not be taken seriously. "
+    
+    )
+
+    st.divider()
 
     # url='https://drive.google.com/file/d/1sNJ7KwzX93RGZQQhXfm1R6bLcNRUiBcP/view?usp=sharing'
     # url='https://drive.google.com/uc?id=' + url.split('/')[-2]
@@ -57,6 +63,8 @@ def main():
         X, y, test_size=0.3, random_state=29)
     
     lm = LinearRegression().fit( X_train, y_train )
+
+    response = lm.predict( x_test )
     
     InputAge = st.selectbox('How old are you?', ["18-21","22-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-69","70+"]) + ';'
     
@@ -267,8 +275,15 @@ def img_to_bytes(img_path):
 def cs_sidebar():
 
     st.sidebar.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=148 height=148>](https://github.com/GabeBotics/AnalyticsDashboard)'''.format(img_to_bytes("logomark_website.png")), unsafe_allow_html=True)
-    st.sidebar.header('Predict Programmer Compensation')
-    st.sidebar.subheader('BUS 458 Final Project')
+    st.sidebar.header('Final Project Dashboard')
+    st.sidebar.subheader('Gabriel Walker, Aaryon Sharma, Ben Poovey, Daniel Casella')
+
+    st.sidebar.divider()
+    st.sidebar.header('Model Statistics:')
+    st.sidebar.text('R^2 score: ' r2_score(y_test, response) )
+    st.sidebar.text('Mean Squared Error: ' mean_squared_error(y_test, response) )
+    st.sidebar.text('Mean Absolute Error: ' mean_absolute_error(y_test, response) )
+
     return None
 
 ##########################
