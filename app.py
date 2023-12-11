@@ -34,11 +34,11 @@ def main():
     
     # Main code for model goes here
 
-    url='https://drive.google.com/file/d/1sNJ7KwzX93RGZQQhXfm1R6bLcNRUiBcP/view?usp=sharing'
-    url='https://drive.google.com/uc?id=' + url.split('/')[-2]
+    # url='https://drive.google.com/file/d/1sNJ7KwzX93RGZQQhXfm1R6bLcNRUiBcP/view?usp=sharing'
+    # url='https://drive.google.com/uc?id=' + url.split('/')[-2]
 
     # Read the CSV file
-    kaggleCon = pd.read_csv( url, index_col=0 )
+    kaggleCon = pd.read_csv( 'PythonKaggleFile', index_col=0 )
     
     # Convert specified columns to factors
     cols_to_convert = ['Age', 'Gender', 'Country', 'Years.Programming', 'Incorporate.Machine.Learning', 'ML.Hubs...Repositories.Used', 'Highest.Level.of.Formal.Education']
