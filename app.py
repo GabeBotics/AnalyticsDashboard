@@ -64,7 +64,7 @@ def main():
     
     InputStudent = str(int(st.toggle('Are you a student?'))) + ';'
     
-    InputYearsProgramming = '3-5 years' + ';'
+    InputYearsProgramming = st.selectbox('How long have you been programming for?', kaggleCon['Years.Programming'].unique()) + ';'
     
     InputIncorporateMachineLearning = 'No Answer' + ';'
     
