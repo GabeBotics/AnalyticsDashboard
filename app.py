@@ -38,7 +38,7 @@ def main():
     # url='https://drive.google.com/uc?id=' + url.split('/')[-2]
 
     # Read the CSV file
-    kaggleCon = pd.read_csv( 'PythonKaggleFile', index_col=0 )
+    kaggleCon = pd.read_csv( 'PythonKaggleFile.csv', index_col=0 )
     
     # Convert specified columns to factors
     cols_to_convert = ['Age', 'Gender', 'Country', 'Years.Programming', 'Incorporate.Machine.Learning', 'ML.Hubs...Repositories.Used', 'Highest.Level.of.Formal.Education']
