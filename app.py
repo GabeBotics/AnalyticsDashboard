@@ -65,15 +65,15 @@ def main():
     
     InputStudent = str(int(st.toggle('Are you a student?'))) + ';'
     
-    InputYearsProgramming = st.selectbox('How long have you been programming for?', kaggleCon['Years.Programming'].unique()) + ';'
+    InputYearsProgramming = st.selectbox('For how many years have you been writing code and/or programming?', kaggleCon['Years.Programming'].unique()) + ';'
     
     InputIncorporateMachineLearning = st.selectbox('How does your company incorporate machine learning?', kaggleCon['Incorporate.Machine.Learning'].unique()) + ';'
     
     InputMLHubsRepositoriesUsed = st.selectbox('What Machine Learning Repository do you use?', kaggleCon['ML.Hubs...Repositories.Used'].unique()) + ';'
     
-    InputHighestLevelofFormalEducation = st.selectbox('What is your highest level of education?', kaggleCon['Highest.Level.of.Formal.Education'].unique()) + ';'
+    InputHighestLevelofFormalEducation = st.selectbox('What is the highest level of formal education that you have attained or plan to attain within the next 2 years?', kaggleCon['Highest.Level.of.Formal.Education'].unique()) + ';'
 
-    InputProgrammingLanguages = st.multiselect('What programming languages are you familiar with?', ['Python', 'R', 'SQL', 'C', 'C#', 'C++', 'Java', 'Javascript', 'Bash', 'PHP', 'MATLAB', 'Julia', 'Go' ])
+    InputProgrammingLanguages = st.multiselect('What programming languages do you use on a regular basis? (Select all that apply)', ['Python', 'R', 'SQL', 'C', 'C#', 'C++', 'Java', 'Javascript', 'Bash', 'PHP', 'MATLAB', 'Julia', 'Go' ])
 
     NoProgramming = '0'
     if len(InputProgrammingLanguages) == 0:
@@ -131,6 +131,31 @@ def main():
     if 'Python' in InputProgrammingLanguages:
         python = '1;'
 
+    InputHelpfulCourses = st.multiselect('What products or platforms did you find to be most helpful when you first started studying data science? (Select all that apply)' ['University courses', 'Online courses (Coursera, EdX, etc)', 'Social media platforms (Reddit, Twitter, etc)', 'Video platforms (YouTube, Twitch, etc)', 'Kaggle (notebooks, competitions, etc)', 'None / I do not study data science'])
+
+    university = '0;'
+    if 'University courses' in InputHelpfulCourses:
+        university = '1;'
+
+    online = '0;'
+    if 'Online courses (Coursera, EdX, etc)' in InputHelpfulCourses:
+        online = '1;'
+    
+    social = '0;'
+    if 'Social media platforms (Reddit, Twitter, etc)' in InputHelpfulCourses:
+        social = '1;'
+    
+    video = '0;'
+    if 'Video platforms (YouTube, Twitch, etc)' in InputHelpfulCourses:
+        video = '1;'
+    
+    Helpfulkaggle = '0;'
+    if 'Kaggle (notebooks, competitions, etc)' in InputHelpfulCourses:
+        Helpfulkaggle = '1;'
+
+    HelpfulNone = '0;'
+    if 'Kaggle (notebooks, competitions, etc)' in InputHelpfulCourses:
+        HelpfulNone = '1;'
 
     StringData = StringIO('Age;Gender;Country;Student;Years.Programming;Incorporate.Machine.Learning;ML.Hubs...Repositories.Used;Highest.Level.of.Formal.Education;Helpful.University;' 
                   + 'Helpful.Online.Courses;Helpful.Social.Media;Helpful.Video.Platform;Helpful.Kaggle;Helpful.None;Media.on.Social.Twitter;Media.on.Social.Email.Newsletters;'
@@ -138,7 +163,7 @@ def main():
                   + 'No.Media.Sources;Data.Science.on.Coursera;Data.Science.on.edX;Data.Science.on.Kaggle.Learn.Courses;Data.Science.on.DataCamp;Data.Science.on.Fast.ai;Data.Science.on.Udacity;Data.Science.on.Udemy;'
                   + 'Data.Science.on.LinkedIn.Learning;Cloud.certification.programs;Data.Science.University.Courses;No.Data.Science.Courses;Python;R;SQL;C;C.;C..;Java;Javascript;Bash;PHP;MATLAB;Julia;Go;No.Programming.Languages\n'
                   + InputAge + InputGender + InputCountry + InputStudent + InputYearsProgramming + InputIncorporateMachineLearning +
-                          InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'
+                          InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + university + online + social + video + Helpfulkaggle + HelpfulNone + '0;' + '0;' + '0;'
                            + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
                            + '0;' + python + r + sql + c  + chash + cplus + jva + jscript + basher + php + mlab + Julia + Go + NoProgramming + '\n' )
     
