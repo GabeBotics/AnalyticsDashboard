@@ -198,7 +198,10 @@ def main():
                   + InputAge + InputGender + InputCountry + InputStudent + InputYearsProgramming + InputIncorporateMachineLearning +
                           InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + university + online + social + video + Helpfulkaggle + HelpfulNone + 
                           MediaSourceMap['Twitter (data science influencers)'] + MediaSourceMap['Email newsletters (Data Elixir, O\'Reilly Data & AI, etc)'] +  MediaSourceMap['Reddit (r/machinelearning, etc)']
-                           + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
+                           + MediaSourceMap['Kaggle (notebooks, forums, etc)'] + MediaSourceMap['Course Forums (forums.fast.ai, Coursera forums, etc)'] 
+                           + MediaSourceMap['YouTube (Kaggle YouTube, Cloud AI Adventures, etc)']  + MediaSourceMap['Podcasts (Chai Time Data Science, O’Reilly Data Show, etc)'] + MediaSourceMap['Blogs (Towards Data Science, Analytics Vidhya, etc)']
+                           + MediaSourceMap['Journal Publications (peer-reviewed journals, conference proceedings, etc)'] + MediaSourceMap['Slack Communities (ods.ai, kagglenoobs, etc)'] + MediaSourceMap['None']
+                           + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
                            + '0;' + python + r + sql + c  + chash + cplus + jva + jscript + basher + php + mlab + Julia + Go + NoProgramming + '\n' )
     
     inputdf = pd.read_csv( StringData, sep=";")
