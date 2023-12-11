@@ -188,7 +188,7 @@ def main():
 
     for key, value in MediaSourceMap.items():
         if key in InputMediaSources:
-            value = '1;'
+            MediaSourceMap[ key ] = '1;'
 
     StringData = StringIO('Age;Gender;Country;Student;Years.Programming;Incorporate.Machine.Learning;ML.Hubs...Repositories.Used;Highest.Level.of.Formal.Education;Helpful.University;' 
                   + 'Helpful.Online.Courses;Helpful.Social.Media;Helpful.Video.Platform;Helpful.Kaggle;Helpful.None;Media.on.Social.Twitter;Media.on.Social.Email.Newsletters;'
@@ -196,7 +196,8 @@ def main():
                   + 'No.Media.Sources;Data.Science.on.Coursera;Data.Science.on.edX;Data.Science.on.Kaggle.Learn.Courses;Data.Science.on.DataCamp;Data.Science.on.Fast.ai;Data.Science.on.Udacity;Data.Science.on.Udemy;'
                   + 'Data.Science.on.LinkedIn.Learning;Cloud.certification.programs;Data.Science.University.Courses;No.Data.Science.Courses;Python;R;SQL;C;C.;C..;Java;Javascript;Bash;PHP;MATLAB;Julia;Go;No.Programming.Languages\n'
                   + InputAge + InputGender + InputCountry + InputStudent + InputYearsProgramming + InputIncorporateMachineLearning +
-                          InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + university + online + social + video + Helpfulkaggle + HelpfulNone + MediaSourceMap['Twitter (data science influencers)'] + '0;' + '0;'
+                          InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + university + online + social + video + Helpfulkaggle + HelpfulNone + 
+                          MediaSourceMap['Twitter (data science influencers)'] + MediaSourceMap['Email newsletters (Data Elixir, O\'Reilly Data & AI, etc)'] +  MediaSourceMap['Reddit (r/machinelearning, etc)']
                            + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
                            + '0;' + python + r + sql + c  + chash + cplus + jva + jscript + basher + php + mlab + Julia + Go + NoProgramming + '\n' )
     
