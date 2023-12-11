@@ -132,7 +132,7 @@ def main():
     if 'Python' in InputProgrammingLanguages:
         python = '1;'
 
-    InputHelpfulCourses = st.multiselect('What products or platforms did you find to be most helpful when you first started studying data science? (Select all that apply)' ['University courses', 'Online courses (Coursera, EdX, etc)', 'Social media platforms (Reddit, Twitter, etc)', 'Video platforms (YouTube, Twitch, etc)', 'Kaggle (notebooks, competitions, etc)', 'None / I do not study data science'])
+    InputHelpfulCourses = st.multiselect('What products or platforms did you find to be most helpful when you first started studying data science? (Select all that apply)', ['University courses', 'Online courses (Coursera, EdX, etc)', 'Social media platforms (Reddit, Twitter, etc)', 'Video platforms (YouTube, Twitch, etc)', 'Kaggle (notebooks, competitions, etc)', 'None / I do not study data science'])
 
     university = '0;'
     if 'University courses' in InputHelpfulCourses:
