@@ -60,7 +60,7 @@ def main():
     InputGender = st.radio(
     "What is your gender?", ["Man", "Woman", "Prefer not to say", "Nonbinary", "Prefer to self-describe"]) + ';'
     
-    InputCountry = st.selectbox('What country do you live in?', ["18-21","22-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-69","70+"]) + ';'
+    InputCountry = st.selectbox('What country do you live in?', kaggleCon['Country'].unique()) + ';'
     
     InputStudent = str(1) + ';'
     
