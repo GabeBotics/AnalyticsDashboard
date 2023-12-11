@@ -36,8 +36,8 @@ def main():
     # Main code for model goes here
     st.title("Final Project Dashboard")
     st.subheader("Gabriel Walker, Aaryon Sharma, Ben Poovey, Daniel Casella")
-    st.text("This dashboard is intended to predict compensation for programmers using a linear regression model. Data is based on the Kaggle Programmer Compensation Dataset (2022)." +
-    " All compensation predictions are an estimate, and should not be taken seriously. "
+    st.text("This dashboard is intended to predict compensation for programmers using a linear regression model. \nData is based on the Kaggle Programmer Compensation Dataset (2022)." +
+    " \nAll compensation predictions are an estimate, and should not be taken seriously. "
     
     )
 
@@ -258,22 +258,6 @@ def main():
     st.metric(label="Your Predicted Compensation (USD)", value=ind_prediction)
     
     # -----------------------------------
-    cs_sidebar()
-    cs_body()
-
-    return None
-
-# Thanks to streamlitopedia for the following code snippet
-
-def img_to_bytes(img_path):
-    img_bytes = Path(img_path).read_bytes()
-    encoded = base64.b64encode(img_bytes).decode()
-    return encoded
-
-# sidebar
-
-def cs_sidebar():
-
     st.sidebar.markdown('''[<img src='data:image/png;base64,{}' class='img-fluid' width=148 height=148>](https://github.com/GabeBotics/AnalyticsDashboard)'''.format(img_to_bytes("logomark_website.png")), unsafe_allow_html=True)
     st.sidebar.header('Final Project Dashboard')
     st.sidebar.subheader('Gabriel Walker, Aaryon Sharma, Ben Poovey, Daniel Casella')
@@ -286,13 +270,12 @@ def cs_sidebar():
 
     return None
 
-##########################
-# Main body of cheat sheet
-##########################
+# Thanks to streamlitopedia for the following code snippet
 
-def cs_body():
-    
-    return None
+def img_to_bytes(img_path):
+    img_bytes = Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
 
 # Run main()
 
