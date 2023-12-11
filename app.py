@@ -108,7 +108,7 @@ def main():
 
     ind_prediction = prediction[len(prediction) - 1]
     
-    st.metric(label="Your Predicted Compensation", value=ind_prediction)
+    st.metric(label="Your Predicted Compensation", value='$' + ind_prediction)
     
     # -----------------------------------
     cs_sidebar()
