@@ -280,9 +280,9 @@ def cs_sidebar():
 
     st.sidebar.divider()
     st.sidebar.header('Model Statistics:')
-    st.sidebar.text('R^2 score: ' r2_score(y_test, response) )
-    st.sidebar.text('Mean Squared Error: ' mean_squared_error(y_test, response) )
-    st.sidebar.text('Mean Absolute Error: ' mean_absolute_error(y_test, response) )
+    st.sidebar.text('R^2 score: ', r2_score(y_test, response) )
+    st.sidebar.text('Mean Squared Error: ', mean_squared_error(y_test, response) )
+    st.sidebar.text('Mean Absolute Error: ', mean_absolute_error(y_test, response) )
 
     return None
 
