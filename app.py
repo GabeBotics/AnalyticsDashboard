@@ -95,10 +95,6 @@ def main():
     st.metric(label="Your Predicted Compensation", value=ind_prediction)
     
     # -----------------------------------
-
-    st.header("BUS 458 Final Project: Programmer Compensation Estimate")
-    st.subheader("This estimate relies on Kaggle's programmer compensation survey and was created solely for use by BUS 458 classmates and to represent our data analytics abilities.")
-    
     cs_sidebar()
     cs_body()
 
