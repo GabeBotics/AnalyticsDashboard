@@ -68,11 +68,11 @@ def main():
     
     InputYearsProgramming = st.selectbox('How long have you been programming for?', kaggleCon['Years.Programming'].unique()) + ';'
     
-    InputIncorporateMachineLearning = 'No Answer' + ';'
+    InputIncorporateMachineLearning = st.selectbox('How does your company incorporate machine learning?', kaggleCon['Incorporate.Machine.Learning'].unique()) + ';'
     
-    InputMLHubsRepositoriesUsed = 'No Answer' + ';'
+    InputMLHubsRepositoriesUsed = st.selectbox('What Machine Learning Repository do you use?', kaggleCon['ML.Hubs...Repositories.Used'].unique()) + ';'
     
-    InputHighestLevelofFormalEducation = 'Some college/university study without earning a bachelor’s degree' + ';'
+    InputHighestLevelofFormalEducation = st.selectbox('What is your highest level of education?', kaggleCon['Highest.Level.of.Formal.Education'].unique()) + ';'
     
     StringData = StringIO('Age;Gender;Country;Student;Years.Programming;Incorporate.Machine.Learning;ML.Hubs...Repositories.Used;Highest.Level.of.Formal.Education;Helpful.University;' 
                   + 'Helpful.Online.Courses;Helpful.Social.Media;Helpful.Video.Platform;Helpful.Kaggle;Helpful.None;Media.on.Social.Twitter;Media.on.Social.Email.Newsletters;'
