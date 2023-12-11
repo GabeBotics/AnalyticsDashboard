@@ -20,6 +20,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.metrics import r2_score
 from io import StringIO
+import collections
 
 # Initial page config
 
@@ -157,13 +158,45 @@ def main():
     if 'Kaggle (notebooks, competitions, etc)' in InputHelpfulCourses:
         HelpfulNone = '1;'
 
+    InputMediaSources = st.multiselect( 'Who/what are your favorite media sources that report on data science topics? (Select all that apply)', [
+        'Twitter (data science influencers)',
+        'Email newsletters (Data Elixir, O\'Reilly Data & AI, etc)',
+        'Reddit (r/machinelearning, etc)',
+        'Kaggle (notebooks, forums, etc)',
+        'Course Forums (forums.fast.ai, Coursera forums, etc)',
+        'YouTube (Kaggle YouTube, Cloud AI Adventures, etc)',
+        'Podcasts (Chai Time Data Science, O’Reilly Data Show, etc)',
+        'Blogs (Towards Data Science, Analytics Vidhya, etc)',
+        'Journal Publications (peer-reviewed journals, conference proceedings, etc)',
+        'Slack Communities (ods.ai, kagglenoobs, etc)',
+        'None'
+    ])
+
+    MediaSourceMap = {
+        'Twitter (data science influencers)': '0;',
+        'Email newsletters (Data Elixir, O\'Reilly Data & AI, etc)':'0;',
+        'Reddit (r/machinelearning, etc)':'0;',
+        'Kaggle (notebooks, forums, etc)':'0;',
+        'Course Forums (forums.fast.ai, Coursera forums, etc)':'0;',
+        'YouTube (Kaggle YouTube, Cloud AI Adventures, etc)':'0;',
+        'Podcasts (Chai Time Data Science, O’Reilly Data Show, etc)':'0;',
+        'Blogs (Towards Data Science, Analytics Vidhya, etc)':'0;',
+        'Journal Publications (peer-reviewed journals, conference proceedings, etc)':'0;',
+        'Slack Communities (ods.ai, kagglenoobs, etc)':'0;',
+        'None':'0;'
+    }
+
+    for key, value in MediaSourceMap.items():
+        if key in InputMediaSources:
+            value = '1;'
+
     StringData = StringIO('Age;Gender;Country;Student;Years.Programming;Incorporate.Machine.Learning;ML.Hubs...Repositories.Used;Highest.Level.of.Formal.Education;Helpful.University;' 
                   + 'Helpful.Online.Courses;Helpful.Social.Media;Helpful.Video.Platform;Helpful.Kaggle;Helpful.None;Media.on.Social.Twitter;Media.on.Social.Email.Newsletters;'
                   + 'Media.on.Reddit;Media.on.Kaggle;Media.on.Course.Forums;Media.on.Youtube;Media.on.Podcasts;Media.on.Blogs;Media.on.Journal.Publications;Media.on.Slack.Communities;'
                   + 'No.Media.Sources;Data.Science.on.Coursera;Data.Science.on.edX;Data.Science.on.Kaggle.Learn.Courses;Data.Science.on.DataCamp;Data.Science.on.Fast.ai;Data.Science.on.Udacity;Data.Science.on.Udemy;'
                   + 'Data.Science.on.LinkedIn.Learning;Cloud.certification.programs;Data.Science.University.Courses;No.Data.Science.Courses;Python;R;SQL;C;C.;C..;Java;Javascript;Bash;PHP;MATLAB;Julia;Go;No.Programming.Languages\n'
                   + InputAge + InputGender + InputCountry + InputStudent + InputYearsProgramming + InputIncorporateMachineLearning +
-                          InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + university + online + social + video + Helpfulkaggle + HelpfulNone + '0;' + '0;' + '0;'
+                          InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + university + online + social + video + Helpfulkaggle + HelpfulNone + MediaSourceMap['Twitter (data science influencers)'] + '0;' + '0;'
                            + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
                            + '0;' + python + r + sql + c  + chash + cplus + jva + jscript + basher + php + mlab + Julia + Go + NoProgramming + '\n' )
     
