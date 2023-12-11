@@ -62,7 +62,7 @@ def main():
     
     InputCountry = st.selectbox('What country do you live in?', kaggleCon['Country'].unique()) + ';'
     
-    InputStudent = str(1) + ';'
+    InputStudent = str(int(st.toggle('Are you a student?')) + ';'
     
     InputYearsProgramming = '3-5 years' + ';'
     
