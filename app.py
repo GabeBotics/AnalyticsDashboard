@@ -83,9 +83,53 @@ def main():
     if 'Go' in InputProgrammingLanguages:
         Go = '1;'
 
-    Python = '0;'
+    Julia = '0;'
+    if 'Julia' in InputProgrammingLanguages:
+        Julia = '1;'
+
+    mlab = '0;'
+    if 'MATLAB' in InputProgrammingLanguages:
+        mlab = '1;'
+
+    php = '0;'
+    if 'PHP' in InputProgrammingLanguages:
+        php = '1;'
+    
+    basher = '0;'
+    if 'Bash' in InputProgrammingLanguages:
+        basher = '1;'
+
+    jscript = '0;'
+    if 'Javascript' in InputProgrammingLanguages:
+        jscript = '1;'
+
+    jva = '0;'
+    if 'Java' in InputProgrammingLanguages:
+        jva = '1;'
+    
+    cplus = '0;'
+    if 'C++' in InputProgrammingLanguages:
+        cplus = '1;'
+    
+    chash = '0;'
+    if 'C#' in InputProgrammingLanguages:
+        chash = '1;'
+    
+    c = '0;'
+    if 'C' in InputProgrammingLanguages:
+        c = '1;'
+    
+    sql = '0;'
+    if 'SQL' in InputProgrammingLanguages:
+        sql = '1;'
+    
+    r = '0;'
+    if 'R' in InputProgrammingLanguages:
+        r = '1;'
+    
+    python = '0;'
     if 'Python' in InputProgrammingLanguages:
-        Python = '1;'
+        python = '1;'
 
 
     StringData = StringIO('Age;Gender;Country;Student;Years.Programming;Incorporate.Machine.Learning;ML.Hubs...Repositories.Used;Highest.Level.of.Formal.Education;Helpful.University;' 
@@ -96,7 +140,7 @@ def main():
                   + InputAge + InputGender + InputCountry + InputStudent + InputYearsProgramming + InputIncorporateMachineLearning +
                           InputMLHubsRepositoriesUsed + InputHighestLevelofFormalEducation + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'
                            + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
-                           + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + '0;' + Go + NoProgramming + '\n' )
+                           + '0;' + python + r + sql + c  + chash + cplus + jva + jscript + basher + php + mlab + Julia + Go + NoProgramming + '\n' )
     
     inputdf = pd.read_csv( StringData, sep=";")
 
