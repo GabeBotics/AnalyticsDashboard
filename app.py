@@ -189,6 +189,38 @@ def main():
     for key, value in MediaSourceMap.items():
         if key in InputMediaSources:
             MediaSourceMap[ key ] = '1;'
+    
+    InputDataScienceCourses = st.multiselect( 'On which platforms have you begun or completed data science courses? (Select all that apply)', [
+        'Coursera',
+        'edX',
+        'Kaggle Learn Courses',
+        'DataCamp',
+        'Fast.ai',
+        'Udacity',
+        'Udemy',
+        'LinkedIn Learning',
+        'Cloud-certification programs (direct from AWS, Azure, GCP, or similar)',
+        'University Courses (resulting in a university degree)',
+        'None'
+    ])
+
+     DSCourseMap = {
+        'Coursera':'0;',
+        'edX':'0;',
+        'Kaggle Learn Courses':'0;',
+        'DataCamp':'0;',
+        'Fast.ai':'0;',
+        'Udacity':'0;',
+        'Udemy':'0;',
+        'LinkedIn Learning':'0;',
+        'Cloud-certification programs (direct from AWS, Azure, GCP, or similar)':'0;',
+        'University Courses (resulting in a university degree)':'0;',
+        'None':'0;'
+    }
+
+    for key, value in DSCourseMap.items():
+        if key in InputDataScienceCourses:
+            DSCourseMap[ key ] = '1;'
 
     StringData = StringIO('Age;Gender;Country;Student;Years.Programming;Incorporate.Machine.Learning;ML.Hubs...Repositories.Used;Highest.Level.of.Formal.Education;Helpful.University;' 
                   + 'Helpful.Online.Courses;Helpful.Social.Media;Helpful.Video.Platform;Helpful.Kaggle;Helpful.None;Media.on.Social.Twitter;Media.on.Social.Email.Newsletters;'
@@ -201,8 +233,9 @@ def main():
                            + MediaSourceMap['Kaggle (notebooks, forums, etc)'] + MediaSourceMap['Course Forums (forums.fast.ai, Coursera forums, etc)'] 
                            + MediaSourceMap['YouTube (Kaggle YouTube, Cloud AI Adventures, etc)']  + MediaSourceMap['Podcasts (Chai Time Data Science, O’Reilly Data Show, etc)'] + MediaSourceMap['Blogs (Towards Data Science, Analytics Vidhya, etc)']
                            + MediaSourceMap['Journal Publications (peer-reviewed journals, conference proceedings, etc)'] + MediaSourceMap['Slack Communities (ods.ai, kagglenoobs, etc)'] + MediaSourceMap['None']
-                           + '0;' + '0;' + '0;' + '0;' + '0;'  + '0;' + '0;' + '0;' + '0;' + '0;'
-                           + '0;' + python + r + sql + c  + chash + cplus + jva + jscript + basher + php + mlab + Julia + Go + NoProgramming + '\n' )
+                           + DSCourseMap['Coursera'] + DSCourseMap['edX'] + DSCourseMap['Kaggle Learn Courses'] + DSCourseMap['DataCamp'] + DSCourseMap['Fast.ai'] + DSCourseMap['Udacity'] + DSCourseMap['Udemy'] + DSCourseMap['LinkedIn Learning'] 
+                           + DSCourseMap['Cloud-certification programs (direct from AWS, Azure, GCP, or similar)'] + DSCourseMap['University Courses (resulting in a university degree)']
+                           + DSCourseMap['None'] + python + r + sql + c  + chash + cplus + jva + jscript + basher + php + mlab + Julia + Go + NoProgramming + '\n' )
     
     inputdf = pd.read_csv( StringData, sep=";")
 
