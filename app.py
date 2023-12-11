@@ -32,7 +32,7 @@ st.set_page_config(
 
 def main():
 
-    st.header("BUS 458 Final Project: Programmer Salary Estimate")
+    st.header("BUS 458 Final Project: Programmer Compensation Estimate")
     st.subheader("This estimate relies on Kaggle's programmer compensation survey and was created solely for use by BUS 458 classmates and to represent our data analytics abilities.")
     # Main code for model goes here
 
@@ -60,7 +60,7 @@ def main():
     InputAge = st.selectbox('How old are you?', ["18-21","22-24","25-29","30-34","35-39","40-44","45-49","50-54","55-59","60-69","70+"]) + ';'
     
     InputGender = st.radio(
-    "What is your gender?", [":rainbow[Comedy]", "***Drama***", "Documentary :movie_camera:"])
+    "What is your gender?", ["Man", "Woman", "Prefer not to say", "Nonbinary", "Prefer to self-describe"])
     
     InputCountry = 'United States of America' + ';'
     
