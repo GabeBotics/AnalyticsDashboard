@@ -204,7 +204,7 @@ def main():
         'None'
     ])
 
-     DSCourseMap = {
+    DSCourseMap = {
         'Coursera':'0;',
         'edX':'0;',
         'Kaggle Learn Courses':'0;',
